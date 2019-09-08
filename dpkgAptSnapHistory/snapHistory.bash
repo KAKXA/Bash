@@ -1,0 +1,1 @@
+snap list >> snap.txt
