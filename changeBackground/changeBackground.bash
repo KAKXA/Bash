@@ -1,6 +1,8 @@
 #! /bin/bash
-source /etc/profile
 picPath=/home/zgk/Pictures/	# assign picPath your own picture directory as a value
+
+
+source /etc/profile
 cd $picPath
 picNum=`ls -l | grep "^-" | wc -l`
 ramNum=`date +%s`		# develop a random integer
@@ -14,11 +16,11 @@ do
 done
 
 result=`expr $ramNum % $picNum`
-echo background:${folderList[$result]} `env LANG=en_US.UTF-8 date`>> /home/zgk/program/Bash/changeBackground/start1.log		# if you want to see which one it makes, you can remove "#"
 #gsettings set org.gnome.desktop.background picture-uri $picPath${folderList[$result]}
+#use this is okay, but the next row better for rc.local(not necessary now)
 sudo -H -u zgk DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus gsettings set org.gnome.desktop.background picture-uri $picPath${folderList[$result]}
 
 result=$(expr $[ $result * $RANDOM ] % $picNum)
-echo screensaver:${folderList[$result]} `env LANG=en_US.UTF-8 date`	>> /home/zgk/program/Bash/changeBackground/start2.log # if you want to see which one it makes, you can remove "#"
 #gsettings set org.gnome.desktop.screensaver picture-uri $picPath${folderList[$result]}
+#use this is okay, but the next row better for rc.local(not necessary now)
 sudo -H -u zgk DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus gsettings set org.gnome.desktop.screensaver picture-uri $picPath${folderList[$result]}

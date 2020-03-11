@@ -1,4 +1,25 @@
-# How to set a script which execute automatically when Linux start
+# 自动换Linux壁纸锁屏/change Linux background and Screensaver
+
+## Method nowadays
+
+1. Add your picture path to `changeBackground.bash`, that is:
+
+   ```bash
+   picPath = $yourPicturePath
+   ```
+
+   
+
+2. Modify your crontab:
+
+```bash
+crontab -e
+0 */12 * * * $changeBackgroundPath/changeBackground.bash
+```
+
+
+
+## Method before(Not useful in Ubuntu 19)
 
 1. You have to enable rc.local service ( if you are or are under ubuntu 14 skip this step )
 
@@ -59,8 +80,8 @@
      sudo systemctl status rc-local.service
      ```
 
-2.  add `bash $yourPath/changeBackground.bash` to your /etc/rc.local;
+2. add `bash $yourPath/changeBackground.bash` to your /etc/rc.local;
 
-3.  modify changeBackground.bash as the annotation says;
+3. modify changeBackground.bash as the annotation says;
 
 4. reboot and check.
