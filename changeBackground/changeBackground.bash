@@ -16,11 +16,11 @@ do
 done
 
 result=`expr $ramNum % $picNum`
-gsettings set org.gnome.desktop.background picture-uri $picPath${folderList[$result]}
+#gsettings set org.gnome.desktop.background picture-uri $picPath${folderList[$result]}
 #use this is okay, but the next row better for rc.local(not necessary now)
-#sudo -H -u zgk DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus gsettings set org.gnome.desktop.background picture-uri $picPath${folderList[$result]}
+sudo -H -u zgk DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus gsettings set org.gnome.desktop.background picture-uri $picPath${folderList[$result]}
 
 result=$(expr $[ $result * $RANDOM ] % $picNum)
-gsettings set org.gnome.desktop.screensaver picture-uri $picPath${folderList[$result]}
+#gsettings set org.gnome.desktop.screensaver picture-uri $picPath${folderList[$result]}
 #use this is okay, but the next row better for rc.local(not necessary now)
-#sudo -H -u zgk DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus gsettings set org.gnome.desktop.screensaver picture-uri $picPath${folderList[$result]}
+sudo -H -u zgk DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus gsettings set org.gnome.desktop.screensaver picture-uri $picPath${folderList[$result]}
