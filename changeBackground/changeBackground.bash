@@ -1,5 +1,5 @@
 #! /bin/bash
-picPath=/home/zgk/Pictures/	# assign picPath your own picture directory as a value
+picPath=~/Pictures/	# assign picPath your own picture directory as a value
 
 
 source /etc/profile
