@@ -1,6 +1,10 @@
 #! /bin/bash
-picPath=~/Pictures/	# assign picPath your own picture directory as a value
-
+disp=`xrandr | grep 2560x1440+0+0`
+if [ -n "$disp" ];then
+	picPath=~/Pictures/	# assign picPath your own picture directory as a value
+else
+	picPath=~/Tall-Pictures/
+fi
 
 source /etc/profile
 cd $picPath
@@ -16,11 +20,11 @@ do
 done
 
 result=`expr $ramNum % $picNum`
-#gsettings set org.gnome.desktop.background picture-uri $picPath${folderList[$result]}
+gsettings set org.gnome.desktop.background picture-uri $picPath${folderList[$result]}
 #use this may be okay, but the next row better for rc.local(not necessary now)
-sudo -H -u zgk DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus gsettings set org.gnome.desktop.background picture-uri $picPath${folderList[$result]}
+#sudo -H -u zgk DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus gsettings set org.gnome.desktop.background picture-uri $picPath${folderList[$result]}
 
 result=$(expr $[ $result * $RANDOM ] % $picNum)
-#gsettings set org.gnome.desktop.screensaver picture-uri $picPath${folderList[$result]}
+gsettings set org.gnome.desktop.screensaver picture-uri $picPath${folderList[$result]}
 #use this may be okay, but the next row better for rc.local(not necessary now)
-sudo -H -u zgk DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus gsettings set org.gnome.desktop.screensaver picture-uri $picPath${folderList[$result]}
+#sudo -H -u zgk DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus gsettings set org.gnome.desktop.screensaver picture-uri $picPath${folderList[$result]}
