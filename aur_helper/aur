@@ -1,0 +1,7 @@
+#!/bin/bash
+git clone $1;
+dir=$1
+dir=${dir##*/}
+dir=${dir%.*}
+cd $dir
+makepkg -si
