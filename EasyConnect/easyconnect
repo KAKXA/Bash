@@ -1,0 +1,4 @@
+#!/bin/bash
+xhost +LOCAL:
+sudo docker run --device /dev/net/tun --cap-add NET_ADMIN -ti -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.Xauthority:/root/.Xauthority -e EXIT=1 -e DISPLAY=$DISPLAY -e URLWIN=1 -e TYPE=x11 -v $HOME/.ecdata:/root -p 127.0.0.1:1080:1080 --net host -e NODANTED=1 hagb/docker-easyconnect
+xhost -LOCAL:
